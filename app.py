@@ -61,7 +61,7 @@ def hdd_failure_prediction():
         print(parent_directory,'parent_directory')
 
         # Construct the full path to the file
-        file_path = os.path.join(parent_directory,"HDD_Setup", "Code", "run.py")
+        file_path = os.path.join(parent_directory,"SSD_Setup", "Code", "run.py")
         print('Code',file_path)
 
         
