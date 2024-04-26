@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HDD Failure Prediction By MSys</title>
+    <title>SSD Failure Prediction By MSys</title>
     <link
       rel="icon"
       type="image/x-icon"
@@ -91,36 +91,36 @@
       p {
         color: #4d4d4d;
       }
-            .home-back {
-    text-decoration: none;
-    color: white;
-    background: #2e87c8;
-    padding: 10px 20px;
-    border-radius: 50px;
-    position: absolute;
-   top: 6%;
-    left: 60%;
-  }
-
-  .Model-back {
-    text-decoration: none;
-    color: white;
-    background: #3e4246;
-    padding: 10px 20px;
-    border-radius: 50px;
-    position: absolute;
+      .home-back {
+        text-decoration: none;
+        color: white;
+        background: #2e87c8;
+        padding: 10px 20px;
+        border-radius: 50px;
+        position: absolute;
         top: 6%;
-    left: 68%;
-  }
+        left: 60%;
+      }
+
+      .Model-back {
+        text-decoration: none;
+        color: white;
+        background: #3e4246;
+        padding: 10px 20px;
+        border-radius: 50px;
+        position: absolute;
+        top: 6%;
+        left: 68%;
+      }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
   <body>
-          <p>
-  <a href="/" class="home-back">Home</a>
-  <a href="/hdd_failure_prediction" class="Model-back">Back To Model</a>
-</p>
-    <h1>HDD Failure Prediction By MSys : Results</h1>
+    <p>
+      <a href="/" class="home-back">Home</a>
+      <a href="/hdd_failure_prediction" class="Model-back">Back To Model</a>
+    </p>
+    <h1>SSD Failure Prediction By MSys : Results</h1>
     <p>auto refresh every 5 seconds</p>
     <div id="data-table">
       <!-- The fetched data will be displayed here -->
@@ -128,8 +128,8 @@
   </body>
   <script>
     // script.js
-        var rootUrl = window.location.protocol + "//" + window.location.host;
-      var apiUrl = rootUrl + "/database";
+    var rootUrl = window.location.protocol + "//" + window.location.host;
+    var apiUrl = rootUrl + "/database";
 
     function fetchData() {
       // Send AJAX request to the server
