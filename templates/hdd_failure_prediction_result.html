@@ -1,0 +1,207 @@
+<!-- data.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HDD Failure Prediction By MSys</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.consumercomplaints.in/thumb.php?bname=1&src=msys-technologies.jpg&wmax=900&hmax=900&quality=90&nocrop=1"
+    />
+    <style>
+      /* style.css */
+
+      body {
+        font-family: Arial, sans-serif;
+        /* background-color: #f2f2f2; */
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #333333;
+        font-weight: 500;
+      }
+
+      #data-table {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        padding: 20px;
+        margin-top: 20px;
+      }
+      #main-table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #main-table td,
+      #main-table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #main-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      #main-table tr:hover {
+        background-color: #ddd;
+      }
+
+      #main-table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4d4d4d;
+        color: white;
+      }
+
+      /* table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table th,
+      table td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #cccccc;
+      }
+
+      table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      } */
+      .value-cell {
+        color: black;
+        background-color: white;
+      }
+
+      .value-cell.positive {
+        color: white;
+        background-color: lightgreen;
+      }
+
+      .value-cell.negative {
+        color: white;
+        background-color: lightcoral;
+      }
+      p {
+        color: #4d4d4d;
+      }
+            .home-back {
+    text-decoration: none;
+    color: white;
+    background: #2e87c8;
+    padding: 10px 20px;
+    border-radius: 50px;
+    position: absolute;
+   top: 6%;
+    left: 60%;
+  }
+
+  .Model-back {
+    text-decoration: none;
+    color: white;
+    background: #3e4246;
+    padding: 10px 20px;
+    border-radius: 50px;
+    position: absolute;
+        top: 6%;
+    left: 68%;
+  }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+          <p>
+  <a href="/" class="home-back">Home</a>
+  <a href="/hdd_failure_prediction" class="Model-back">Back To Model</a>
+</p>
+    <h1>HDD Failure Prediction By MSys : Results</h1>
+    <p>auto refresh every 5 seconds</p>
+    <div id="data-table">
+      <!-- The fetched data will be displayed here -->
+    </div>
+  </body>
+  <script>
+    // script.js
+        var rootUrl = window.location.protocol + "//" + window.location.host;
+      var apiUrl = rootUrl + "/database";
+
+    function fetchData() {
+      // Send AJAX request to the server
+      $.ajax({
+        url: apiUrl,
+        type: "GET",
+        success: function (response) {
+          // Update the HTML content with the fetched data
+          updateHTML(response);
+        },
+        error: function (error) {
+          console.log("Error fetching data:", error);
+        },
+      });
+      function updateHTML(data) {
+        // Update the HTML content with the fetched data
+        // Assuming you have a div with id 'data-table'
+        var html = '<table id="main-table">';
+        html += "<tr>";
+        html += "<th>" + "Serial Number" + "</th>";
+        html += "<th>" + "Model" + "</th>";
+        html += "<th>" + "Capacity Bytes" + "</th>";
+        html += "<th>" + "Date" + "</th>";
+        html += "<th>" + "Failure" + "</th>";
+        html += "<th>" + "Prediction" + "</th>";
+        html += "<th>" + "Active Probability" + "</th>";
+        html += "<th>" + "Failure Probability" + "</th>";
+        html += "<th>" + "Confidence Level" + "</th>";
+
+        html += "</tr>";
+        // Generate the table rows and columns
+        // Modify this part based on your data structure
+        for (var i = 0; i < data.length; i++) {
+          html += "<tr>";
+          html += "<td>" + data[i][0] + "</td>";
+          html += "<td>" + data[i][1] + "</td>";
+          html += "<td>" + data[i][2] + "</td>";
+          html += "<td>" + data[i][3] + "</td>";
+          html +=
+            '<td class="value-cell ' +
+            (data[i][4] === "Active" ? "positive" : "negative") +
+            '">' +
+            data[i][4] +
+            "</td>";
+          html +=
+            '<td class="value-cell ' +
+            (data[i][5] === "Active" ? "positive" : "negative") +
+            '">' +
+            data[i][5] +
+            "</td>";
+          html +=
+            '<td class="value-cell ' +
+            (data[i][7] >= "0.5" ? "positive" : "negative") +
+            '">' +
+            data[i][7] +
+            "</td>";
+          html +=
+            '<td class="value-cell ' +
+            (data[i][8] >= "0.5" ? "positive" : "negative") +
+            '">' +
+            data[i][8] +
+            "</td>";
+          html += "<td>" + data[i][6] + "</td>";
+          // Add more columns as needed
+          html += "</tr>";
+        }
+        html += "</table>";
+        $("#data-table").html(html);
+      }
+    }
+
+    // Fetch data every 5 seconds
+    setInterval(fetchData, 5000);
+  </script>
+</html>

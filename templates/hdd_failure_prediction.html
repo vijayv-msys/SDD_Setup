@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HDD Failure Prediction By MSys</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.consumercomplaints.in/thumb.php?bname=1&src=msys-technologies.jpg&wmax=900&hmax=900&quality=90&nocrop=1"
+    />
+    <style>
+      body {
+        background: url(https://www.msystechnologies.com/wp-content/uploads/2020/03/homeHeroBg1-12.jpg);
+      }
+
+      .container {
+        max-width: 80%;
+        max-height: 60vh;
+        background-color: #fff;
+        padding: 3rem;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        font-weight: 500;
+      }
+
+      p {
+        text-align: center;
+        margin-top: 0;
+      }
+
+      form {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .file-input-label {
+        display: inline-block;
+        background-color: #4d4d4d;
+        color: #fff;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+
+      .file-input-label:hover {
+        background-color: #2b2d2b;
+      }
+
+      .file-input-label:active {
+        background-color: #4d4d4d;
+      }
+
+      .file-selected {
+        color: green;
+        font-weight: bold;
+        display: flow-root;
+      }
+
+      .submit-btn {
+        display: block;
+        background-color: #4caf50;
+        color: #fff;
+        padding: 15px 30px;
+        margin: 30px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      .btn-submit {
+        display: flex;
+        justify-content: center;
+      }
+      p {
+        font-weight: 400;
+        color: rgb(111, 106, 106);
+      }
+      .main-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 6rem;
+      }
+        .Model-back {
+    text-decoration: none;
+    color: white;
+    background: #3e4246;
+    padding: 10px 20px;
+    border-radius: 50px;
+  }
+  
+  .dashboard-link {
+        text-decoration: none;
+        background-color: #2f5a7e !important;
+        color: #fff;
+        padding: 15px 30px;
+        margin: 30px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        display: inline-block;
+      }
+
+      .dashboard-link:hover {
+        background-color: #45a049;
+      }
+
+      .dashboard-link:active {
+        background-color: #4caf50;
+      }
+
+    </style>
+  </head>
+  <body>
+     
+    <div class="main-container">
+      <div class="container">
+        <h1>HDD Failure Prediction By MSys</h1>
+        <p>Start Our Prediction!</p>
+        <form method="POST" enctype="multipart/form-data" action="/hdd_failure_prediction">
+          <!-- <label for="myFile" class="file-input-label" id="fileLabel"
+            >Select File</label
+          >
+          <input
+            type="file"
+            id="myFile"
+            name="uploaded-file"
+            accept=".csv"
+            onchange="showFileName()"
+          />
+          <span id="fileName"></span> -->
+          <div class="btn-submit">
+            <input type="submit" value="Start" class="submit-btn" />
+            
+          </div>
+            <a href="/" class="Model-back">Back</a>
+        </form>
+        {% if prediction %}
+     
+        
+        <a
+        href="http://ec2-13-60-9-103.eu-north-1.compute.amazonaws.com:3000/d/fdhiun1c90qo0a/hdd?orgId=1&from=1712043413552&to=1712065013553&viewPanel=1"
+        class="dashboard-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Grafana Dashboard
+      </a>
+        <a
+        href="/hdd_failure_prediction_result"
+        class="dashboard-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        UI Dashboard
+      </a>
+      {% endif %}
+      </div>
+    </div>
+
+    <script>
+      function showFileName() {
+        const fileInput = document.getElementById("myFile");
+        const fileNameSpan = document.getElementById("fileName");
+        const fileLabel = document.getElementById("fileLabel");
+
+        if (fileInput.files.length > 0) {
+          fileNameSpan.textContent =
+            "File selected: " + fileInput.files[0].name;
+          fileNameSpan.classList.add("file-selected");
+          fileLabel.textContent = "Change File";
+        } else {
+          fileNameSpan.textContent = "";
+          fileNameSpan.classList.remove("file-selected");
+          fileLabel.textContent = "Select File";
+        }
+      }
+    </script>
+  </body>
+</html>
