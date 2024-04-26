@@ -26,8 +26,9 @@ from time import sleep
 import pickle
 
 
+script_dir = os.path.dirname(__file__)
 model_file = "SMOTE_XGB_model.pkl"
-model_path = os.path.join("your_directory_path", model_file)
+model_path = os.path.join(script_dir, model_file)
 
 
 def model_train(data,table_count,spark):
