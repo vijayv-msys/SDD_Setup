@@ -26,6 +26,10 @@ from time import sleep
 import pickle
 
 
+model_file = "SMOTE_XGB_model.pkl"
+model_path = os.path.join("your_directory_path", model_file)
+
+
 def model_train(data,table_count,spark):
     selected_features = ['R_ECC_RECOVERED',
  'R_READ_ERROR_RATE',
@@ -49,7 +53,8 @@ def model_train(data,table_count,spark):
  'R_PROGRAM_FAIL_COUNT',
  'R_UNCORR_SECTOR_COUNT',
  'N_PROGRAM_FAIL_COUNT','ISFAULT']]
-    loaded_model = pickle.load(open("SMOTE_XGB_model.pkl", "rb"))
+    #loaded_model = pickle.load(open("SMOTE_XGB_model.pkl", "rb"))
+    loaded_model = pickle.load(open(model_path, "rb"))
     predictions = loaded_model.predict(x[selected_features])
     test_target = x['ISFAULT']
     test_target.reset_index(drop=True, inplace=True)
