@@ -32,6 +32,7 @@ model_path = os.path.join(script_dir, model_file)
 
 
 def model_train(data,table_count,spark):
+    data=data.toPandas()
     selected_features = ['R_ECC_RECOVERED',
  'R_READ_ERROR_RATE',
  'R_COMMAND_TIMEOUT',
