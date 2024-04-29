@@ -149,16 +149,21 @@
         // Assuming you have a div with id 'data-table'
         var html = '<table id="main-table">';
         html += "<tr>";
-        html += "<th>" + "Serial Number" + "</th>";
-        html += "<th>" + "Model" + "</th>";
-        html += "<th>" + "Capacity Bytes" + "</th>";
-        html += "<th>" + "Date" + "</th>";
-        html += "<th>" + "Failure" + "</th>";
-        html += "<th>" + "Prediction" + "</th>";
-        html += "<th>" + "Active Probability" + "</th>";
-        html += "<th>" + "Failure Probability" + "</th>";
-        html += "<th>" + "Confidence Level" + "</th>";
-
+        html += "<th>" + "R_ECC_RECOVERED" + "</th>";
+        html += "<th>" + "R_READ_ERROR_RATE" + "</th>";
+        html += "<th>" + "R_COMMAND_TIMEOUT" + "</th>";
+        html += "<th>" + "N_WEAR_LEVELING_COUNT" + "</th>";
+        html += "<th>" + "R_UNUSED_BLOCK_COUNT" + "</th>";
+        html += "<th>" + "R_CRC_ERROR" + "</th>";
+        html += "<th>" + "R_ERASE_FAIL_COUNT" + "</th>";
+        html += "<th>" + "N_UNUSED_BLOCK_COUNT" + "</th>";
+        html += "<th>" + "R_PROGRAM_FAIL_COUNT" + "</th>";
+        html += "<th>" + "R_UNCORR_SECTOR_COUNT" + "</th>";
+	html += "<th>" + "N_PROGRAM_FAIL_COUNT" + "</th>";
+	html += "<th>" + "Actual" + "</th>";
+	html += "<th>" + "Prediction" + "</th>";
+	 html += "<th>" + "Active_probability" + "</th>";
+	 html += "<th>" + "Failure_probability" + "</th>";
         html += "</tr>";
         // Generate the table rows and columns
         // Modify this part based on your data structure
@@ -193,9 +198,16 @@
             data[i][8] +
             "</td>";
           html += "<td>" + data[i][6] + "</td>";
+	html += "<td>" + data[i][9] + "</td>";
+	html += "<td>" + data[i][10] + "</td>";
+	html += "<td>" + data[i][11] + "</td>";
+	html += "<td>" + data[i][12] + "</td>";
+	html += "<td>" + data[i][13] + "</td>";
+	html += "<td>" + data[i][14] + "</td>";
           // Add more columns as needed
           html += "</tr>";
         }
+
         html += "</table>";
         $("#data-table").html(html);
       }

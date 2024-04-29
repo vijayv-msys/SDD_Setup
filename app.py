@@ -47,8 +47,8 @@ def index():
     return render_template('msys_home.html')
 
 
-@app.route('/hdd_failure_prediction',  methods=("POST", "GET"))
-def hdd_failure_prediction():
+@app.route('/ssd_failure_prediction',  methods=("POST", "GET"))
+def ssd_failure_prediction():
     if request.method == 'POST':
         time.sleep(5)
         
@@ -74,8 +74,8 @@ def hdd_failure_prediction():
     else:
         return render_template('hdd_failure_prediction.html', prediction=False)
 
-@app.route('/hdd_failure_prediction_result',  methods=("POST", "GET"))
-def hdd_failure_prediction_result():
+@app.route('/ssd_failure_prediction_result',  methods=("POST", "GET"))
+def ssd_failure_prediction_result():
     return render_template('hdd_failure_prediction_result.html')
 
 # PostgreSQL configuration
