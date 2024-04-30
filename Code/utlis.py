@@ -68,8 +68,8 @@ def model_train(data,table_count,spark):
     output=pd.DataFrame(data=
                    {   'Actual':test_target.values, 
                        'Prediction':predicted_target.values,
-                       'Active_probability':active_prob,
-                       'Failure_probability':xgb_pred_prob
+                       'Active_probability':active_prob*100,
+                       'Failure_probability':xgb_pred_prob*100
                    }
                    )
     final_df=pd.concat([x[selected_features], output], axis=1,join='outer')
