@@ -24,6 +24,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 from time import sleep
 import pickle
+import numpy as np
 
 
 script_dir = os.path.dirname(__file__)
