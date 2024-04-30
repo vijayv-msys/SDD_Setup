@@ -164,6 +164,7 @@
 	html += "<th>" + "Prediction" + "</th>";
 	 html += "<th>" + "Active_probability" + "</th>";
 	 html += "<th>" + "Failure_probability" + "</th>";
+	html += "<th>" + "Chances_of_failure" + "</th>";
         html += "</tr>";
         // Generate the table rows and columns
         // Modify this part based on your data structure
@@ -173,30 +174,34 @@
           html += "<td>" + data[i][1] + "</td>";
           html += "<td>" + data[i][2] + "</td>";
           html += "<td>" + data[i][3] + "</td>";
-          html +=
-            '<td class="value-cell ' +
-            (data[i][4] === "Active" ? "positive" : "negative") +
-            '">' +
-            data[i][4] +
-            "</td>";
-          html +=
-            '<td class="value-cell ' +
-            (data[i][5] === "Active" ? "positive" : "negative") +
-            '">' +
-            data[i][5] +
-            "</td>";
-          html +=
-            '<td class="value-cell ' +
-            (data[i][7] >= "0.5" ? "positive" : "negative") +
-            '">' +
-            data[i][7] +
-            "</td>";
-          html +=
-            '<td class="value-cell ' +
-            (data[i][8] >= "0.5" ? "positive" : "negative") +
-            '">' +
-            data[i][8] +
-            "</td>";
+	  html += "<td>" + data[i][4] + "</td>";
+	  html += "<td>" + data[i][5] + "</td>";
+	  html += "<td>" + data[i][7] + "</td>";
+	  html += "<td>" + data[i][8] + "</td>";
+          // html +=
+          //   '<td class="value-cell ' +
+          //   (data[i][4] === "Active" ? "positive" : "negative") +
+          //   '">' +
+          //   data[i][4] +
+          //   "</td>";
+          // html +=
+          //   '<td class="value-cell ' +
+          //   (data[i][5] === "Active" ? "positive" : "negative") +
+          //   '">' +
+          //   data[i][5] +
+          //   "</td>";
+          // html +=
+          //   '<td class="value-cell ' +
+          //   (data[i][7] >= "0.5" ? "positive" : "negative") +
+          //   '">' +
+          //   data[i][7] +
+          //   "</td>";
+          // html +=
+          //   '<td class="value-cell ' +
+          //   (data[i][8] >= "0.5" ? "positive" : "negative") +
+          //   '">' +
+          //   data[i][8] +
+          //   "</td>";
           html += "<td>" + data[i][6] + "</td>";
 	html += "<td>" + data[i][9] + "</td>";
 	html += "<td>" + data[i][10] + "</td>";
@@ -204,6 +209,7 @@
 	html += "<td>" + data[i][12] + "</td>";
 	html += "<td>" + data[i][13] + "</td>";
 	html += "<td>" + data[i][14] + "</td>";
+	html += "<td>" + data[i][15] + "</td>";
           // Add more columns as needed
           html += "</tr>";
         }
