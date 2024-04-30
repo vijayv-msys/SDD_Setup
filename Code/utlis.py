@@ -72,6 +72,18 @@ def model_train(data,table_count,spark):
                    }
                    )
     final_df=pd.concat([x[selected_features], output], axis=1,join='outer')
+    conditions = [
+    (final_df['Failure_probability'] > 90),
+    (final_df['Failure_probability'] > 75) & (final_df['Failure_probability'] <= 90),
+    (final_df['Failure_probability'] > 60) & (final_df['Failure_probability'] <= 75),
+    (final_df['Failure_probability'] > 45) & (final_df['Failure_probability'] <= 60),
+    (final_df['Failure_probability'] > 30) & (final_df['Failure_probability'] <= 45),
+    (final_df['Failure_probability'] > 15) & (final_df['Failure_probability'] <= 30),
+    (final_df['Failure_probability'] <= 15)]
+
+    choices = ['Critical', 'Very High', 'High', 'Moderate', 'Low', 'Very Low', 'Healthy']
+    final_df['Chances_of_failure'] = np.select(conditions, choices, default=np.nan)
+
     
     #print(pandasDF)
     # Connect to the PostgreSQL database
