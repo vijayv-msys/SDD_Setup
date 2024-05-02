@@ -207,9 +207,28 @@
 	html += "<td>" + data[i][10] + "</td>";
 	html += "<td>" + data[i][11] + "</td>";
 	html += "<td>" + data[i][12] + "</td>";
-	html += "<td>" + data[i][13] + "</td>";
-	html += "<td>" + data[i][14] + "</td>";
-    var value = data[i][15]; // Assuming data[i][15] is the column for which you want to set the background color
+    var value = parseInt(data[i][14]); // Assuming data[i][15] is the column for which you want to set the background color
+    var color1 = "";
+    if (value > 90) {
+        color1 = "darkred";
+    } else if (value >= 75 && value <= 90) {
+        color1 = "indianred"; // Some light red
+    } else if (value >= 60 && value < 75) {
+        color1 = "lightcoral"; // Some lighter red
+    } else if (value >= 45 && value < 60) {
+        color1 = "yellow";
+    } else if (value >= 30 && value < 45) {
+        color1 = "lightgreen";
+    } else {
+        color1 = "darkgreen";
+    }
+    // Set text color to white if background color is green
+    var textColor = (color === "lightgreen" || color === "darkgreen") ? "white" : "black";
+    html += "<td style='background-color:" + color1 + "; color: " + textColor + "'>" + data[i][13] + "</td>";
+    html += "<td style='background-color:" + color1 + "; color: " + textColor + "'>" + data[i][14] + "</td>";
+	// html += "<td>" + data[i][13] + "</td>";
+	// html += "<td>" + data[i][14] + "</td>";
+    var value = data[i][15]; 
     var color = "";
     if (value === "High") {
         color = "darkred";
@@ -226,7 +245,7 @@
     }
     // Set text color to white if background color is green
     var textColor = (color === "lightgreen" || color === "darkgreen") ? "white" : "black";
-    html += "<td style='background-color:" + color + "; color: " + textColor + "'>" + data[i][15] + "</td>";
+    html += "<td style='background-color:" + color1 + "; color: " + textColor + "'>" + data[i][15] + "</td>";
           html += "</tr>";
         }
 
