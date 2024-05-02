@@ -209,7 +209,7 @@
 	html += "<td>" + data[i][12] + "</td>";
 	html += "<td>" + data[i][13] + "</td>";
 	html += "<td>" + data[i][14] + "</td>";
-	   var value = parseInt(data[i][15]); // Assuming data[i][15] is the column for which you want to set the background color
+    var value = parseInt(data[i][15]); // Assuming data[i][15] is the column for which you want to set the background color
     var color = "";
     if (value > 90) {
         color = "darkred";
@@ -224,9 +224,9 @@
     } else {
         color = "darkgreen";
     }
-    html += "<td style='background-color:" + color + "'>" + data[i][15] + "</td>";
-    // End dynamic background color
-          // Add more columns as needed
+    // Set text color to white if background color is green
+    var textColor = (color === "lightgreen" || color === "darkgreen") ? "white" : "black";
+    html += "<td style='background-color:" + color + "; color: " + textColor + "'>" + data[i][15] + "</td>";
           html += "</tr>";
         }
 
