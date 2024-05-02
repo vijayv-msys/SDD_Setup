@@ -211,15 +211,15 @@
 	html += "<td>" + data[i][14] + "</td>";
     var value = data[i][15]; // Assuming data[i][15] is the column for which you want to set the background color
     var color = "";
-    if (value > "90") {
+    if (value === "High") {
         color = "darkred";
-    } else if (value >= "75" && value <= "90") {
+    } else if (value === "Very High") {
         color = "indianred"; // Some light red
-    } else if (value >= "60" && value < "75") {
+    } else if (value ==="High") {
         color = "lightcoral"; // Some lighter red
-    } else if (value >=" 45" && value < "60") {
+    } else if (value ==="Moderate") {
         color = "yellow";
-    } else if (value >= "30" && value < "45") {
+    } else if (value === "Low") {
         color = "lightgreen";
     } else {
         color = "darkgreen";
